@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Latihan Perulangan</title>
+</head>
+<body>
+  <h2>Daftar Teman Kelas</h2>
+  <ul id="daftar-teman">
+    <!-- Konten akan diisi oleh JavaScript -->
+  </ul>
+
+  <script>
+    var teman = ["Faizal", "Wenka", "Fauzan", "Belva","Amar"];
+    var daftarElement = document.getElementById("daftar-teman");
+
+    for (let i = 0; i < teman.length; i++) {
+      var item = document.createElement("li");
+      item.textContent = teman[i];
+      daftarElement.appendChild(item);
+    }
+  </script>
+</body>
+</html>

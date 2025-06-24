@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplikasi To-Do List</title>
+  <style>
+    li {
+      margin-bottom: 6px;
+    }
+
+    button.hapus {
+      margin-left: 10px;
+      color: white;
+      background-color: red;
+      border: none;
+      padding: 2px 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>To-Do List Sederhana</h2>
+  <input type="text" id="input-todo" placeholder="Ketik tugas baru...">
+  <button onclick="tambahTugas()">Tambah</button>
+  <ul id="daftar-tugas"></ul>
+
+  <script>
+    var tugas = [];
+
+    function tambahTugas() {
+      var inputElement = document.getElementById("input-todo");
+      var isiTugas = inputElement.value.trim();
+
+      if (isiTugas === "") {
+        alert("Tugas tidak boleh kosong!");
+        return;
+      }
+
+      tugas.push(isiTugas);
+      inputElement.value = "";
+      tampilkanDaftar();
+    }
+
+    function hapusTugas(index) {
+      tugas.splice(index, 1); // Hapus elemen pada posisi index
+      tampilkanDaftar();
+    }
+
+    function tampilkanDaftar() {
+      var daftarElement = document.getElementById("daftar-tugas");
+      daftarElement.innerHTML = "";
+
+      for (let i = 0; i < tugas.length; i++) {
+        var item = document.createElement("li");
+        item.textContent = tugas[i];
+
+        var tombolHapus = document.createElement("button");
+        tombolHapus.textContent = "Hapus";
+        tombolHapus.className = "hapus";
+        tombolHapus.onclick = function() {
+          hapusTugas(i);
+        };
+
+        item.appendChild(tombolHapus);
+        daftarElement.appendChild(item);
+      }
+    }
+  </script>
+</body>
+</html>

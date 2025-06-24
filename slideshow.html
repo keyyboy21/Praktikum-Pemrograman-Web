@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Slideshow</title>
+  
+</head>
+<body>
+  <h2>Galeri Gambar</h2>
+  <img id="slideshow-image" src="" alt="Slideshow">
+  <br>
+  <button onclick="gantiGambar(-1)">Previous</button>
+  <button onclick="gantiGambar(1)">Next</button>
+
+  <script>
+    const gambar = [
+      "mlbb street themed squad.jpeg",
+      "chou mobile legends skin_iori yagami.jpeg",
+      "https://placehold.co/500x300/2ecc71/ffffff?text=Gambar+3"
+    ];
+
+    let indexGambar = 0;
+    const imageElement = document.getElementById("slideshow-image");
+
+    function tampilkanGambar() {
+      imageElement.style.opacity = 0; // Animasi keluar
+      setTimeout(() => {
+        imageElement.src = gambar[indexGambar];
+        imageElement.alt = "Gambar ke-" + (indexGambar + 1);
+        imageElement.style.opacity = 1; // Animasi masuk
+      }, 200);
+    }
+
+    function gantiGambar(arah) {
+      indexGambar += arah;
+
+      if (indexGambar >= gambar.length) {
+        indexGambar = 0;
+      } else if (indexGambar < 0) {
+        indexGambar = gambar.length - 1;
+      }
+
+      tampilkanGambar();
+    }
+
+    // Tampilkan gambar pertama saat halaman dimuat
+    window.onload = tampilkanGambar;
+  </script>
+</body>
+</html>

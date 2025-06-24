@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Latihan Objek String</title>
+  <style>
+    #hasilAnalisis {
+      margin-top: 10px;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h2>Analisis Nama</h2>
+  <input type="text" id="inputNama" placeholder="Masukkan nama Anda">
+  <button onclick="analisisNama()">Analisis</button>
+  <p id="hasilAnalisis"></p>
+
+  <script>
+    function analisisNama() {
+      var nama = document.getElementById("inputNama").value.trim();
+      var hasil = "";
+
+      if (nama === "") {
+        hasil = "<span style='color:red;'>Nama tidak boleh kosong!</span>";
+      } else {
+        hasil += "Nama dalam huruf kapital: <b>" + nama.toUpperCase() + "</b><br>";
+        hasil += "Jumlah karakter: <b>" + nama.length + "</b> karakter<br>";
+        hasil += "3 karakter pertama: <b>" + nama.substring(0, 3) + "</b>";
+      }
+
+      document.getElementById("hasilAnalisis").innerHTML = hasil;
+    }
+  </script>
+</body>
+</html>
